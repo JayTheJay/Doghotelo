@@ -1,0 +1,70 @@
+<% layout('./layouts/boilerplate') %> 
+<div class="row">
+    <h1 class="text-center">New Doghotel</h1>
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow">
+            <div class="card-body">
+        <form action="/doghotels" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name='doghotel[title]' required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name='doghotel[location]' required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name='doghotel[image]' required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label" for="price">Doghotel Price (per night)</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">€</span>
+                <input type="text" class="form-control" id= "price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name='doghotel[price]' required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+              </div>
+              
+            </div>
+            <div class="mb-3">
+        
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name='doghotel[description]' required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <div class="mb-3">
+                <div class="custom-file">
+                    <label class="custom-file-label" for="image">Add image(s)</label>
+                    <input type="file" class="custom-file-input" id="image" name="image" multiple>
+                  </div>    
+            </div>
+
+            <div class="mb-3">
+            <button class="btn btn-primary">Add Doghotel</button>
+        </div>
+            </form>
+            <a href='/doghotels'>Back to List</a>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+

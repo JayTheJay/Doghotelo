@@ -1,0 +1,57 @@
+<% layout('./layouts/boilerplate') %> 
+<div class="row">
+    <h1 class="text-center">Edit Doghotel</h1>
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow">
+            <div class="card-body">
+        <form action="/doghotels/<%= doghotel._id%>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title">Title</label>
+            </div>
+                <input class="form-control" type="text" id="title" name='doghotel[title]' value="<%= doghotel.title%>" required>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name='doghotel[location]' value="<%= doghotel.location%>" required>
+            </div>
+            <div class="mb-3">
+            <div class="custom-file">
+                <label class="form-label" for="image">Add more image(s)</label>
+                <input type="file" class="form-control" id="image" name="image" multiple>
+              </div>    
+            </div> 
+            <div class="mb-3">
+                <label class="form-label" for="price">Doghotel Price</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">€</span>
+                <input type="text" class="form-control" id= "price" placeholder="0.00" aria-label="price" aria-describedby="price-label" name='doghotel[price]' value="<%= doghotel.price%>" required>
+              </div>
+              
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name='doghotel[description]' required><%= doghotel.description%></textarea>
+            </div>
+            <div class="mb-3">
+                <%doghotel.images.forEach(function(img, i) {  %> 
+                    <img src=<%= img.thumbnail %>  class= "img-thumbnail" alt="">
+                    <div class="form-check-inline">
+                        <input type="checkbox" id="image-<%= i %>" name="deleteImages[]" value="<%=img.filename%>">
+                    </div>
+                    <label for="image-<%= i %>">Delete?</label>
+                    <% })  %> 
+            </div>
+            <div class="mb-3">
+            <button class="btn btn-info">Update Doghotel</button>
+        </div>
+        </form>
+
+        <script src="https://media-editor.cloudinary.com//all.js" type="text/javascript"></script>
+
+
+
+
+            <a href="/doghotels/<%=doghotel._id%>">Back to my Doghotel</a>
+
+
+        </div>
+    </div>

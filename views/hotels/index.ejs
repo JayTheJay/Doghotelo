@@ -1,0 +1,42 @@
+<% layout('./layouts/boilerplate') %> 
+
+<div id="cluster-map"> </div>
+<h1>All Doghotels</h1>
+<h2><a href='/doghotels/new'>Create new Doghotel</a></h2>
+
+<div id="paginated-list" aria-live="polite">
+<% for (let doghotel of doghotels){%>
+   
+<li class="card mb-3">
+    <div class="row">
+        <div class="col-md-4">
+            <% if(doghotel.images.length) {%> 
+            <img src="<%=doghotel.images[0].url.replace('/upload', '/upload/ar_4:3,c_crop')%>" alt="" class="img-fluid">
+            <% }else{ %>
+                <img src="https://res.cloudinary.com/ddrhjppie/image/upload/v1673347441/Doghotels/dog1_di50ne.jpg" alt="" class="img-fluid"> 
+                <% } %> 
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%=doghotel.title%></h5>
+                <p class="card-text"><%=doghotel.description%></p>
+                <p class="card-text"><small class="text-muted"><%=doghotel.location%></small></p>
+                <a href="/doghotels/<%=doghotel._id%>" class="btn btn-primary">View <%=doghotel.title%></a>
+            </div>
+        </div>
+    </div>
+</li>
+<% }%>
+</div>
+
+
+<script>
+    const mapToken= '<%-process.env.MAPBOXTOKEN%>';
+    //mapbox excepts key of features:
+    const doghotels = {features: <%-JSON.stringify(doghotels)%>};
+
+  </script>
+
+
+<script src="/javascripts/clusterMap.js"></script>
+    
